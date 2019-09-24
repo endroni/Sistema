@@ -12,7 +12,7 @@ namespace Sistema.Model
     {
         public static int Inserir(UsuarioEnt objTabela)
         {
-            throw new NotImplementedException();
+            return new UsuarioControl().Inserir(objTabela);
         }
     }
 }
