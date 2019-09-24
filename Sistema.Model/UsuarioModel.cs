@@ -10,5 +10,9 @@ namespace Sistema.Model
 {
     public class UsuarioModel
     {
+        public static int Inserir(UsuarioEnt objTabela)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
