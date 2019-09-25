@@ -18,12 +18,17 @@ namespace Sistema.Control
                 con.ConnectionString = Properties.Settings.Default.banco;
                 SqlCommand cn = new SqlCommand();
                 cn.CommandType = CommandType.Text;
+                con.Open();
                 cn.CommandText = "INSERT INTO usuarios ([nome],[usuario],[senha]) VALUES (@nome, @usuario, @senha)";
                 cn.Parameters.Add("nome", SqlDbType.VarChar).Value = objTabela.Nome;
                 cn.Parameters.Add("usuario", SqlDbType.VarChar).Value = objTabela.Usuario;
                 cn.Parameters.Add("senha", SqlDbType.VarChar).Value = objTabela.Senha;
 
-                cn.ExecuteNonQuery();
+                cn.Connection = con;
+
+                int qtd = cn.ExecuteNonQuery();
+                Console.Write(qtd);
+                return qtd;
             }   
         }
     }
