@@ -31,5 +31,39 @@ namespace Sistema.Control
                 return qtd;
             }   
         }
+
+        public List<UsuarioEnt> Lista()
+        {
+            using (SqlConnection con = new SqlConnection())
+            {
+                con.ConnectionString = Properties.Settings.Default.banco;
+                SqlCommand cn = new SqlCommand();
+                cn.CommandType = CommandType.Text;
+                con.Open();
+                cn.CommandText = "SELECT * FROM usuarios";
+
+                cn.Connection = con;
+
+                SqlDataReader dr;
+                List<UsuarioEnt> Lista = new List<UsuarioEnt>();
+
+                dr = cn.ExecuteReader();
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        UsuarioEnt dado = new UsuarioEnt();
+                        dado.Id = Convert.ToInt32(dr["id"]);
+                        dado.Nome = Convert.ToString(dr["nome"]);
+                        dado.Usuario = Convert.ToString(dr["usuario"]);
+                        dado.Senha = Convert.ToString(dr["senha"]);
+
+                        Lista.Add(dado);
+                    }
+                }
+                return Lista;
+            }
+        }
     }
 }

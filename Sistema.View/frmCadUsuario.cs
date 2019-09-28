@@ -104,5 +104,26 @@ namespace Sistema.View
             opc = "Editar";
             iniciarOpc();
         }
+
+        private void ListarGrid()
+        {
+            try
+            {
+                List<UsuarioEnt> Lista = new List<UsuarioEnt>();
+                Lista = new UsuarioModel().Lista();
+                grid.AutoGenerateColumns = false;
+                grid.DataSource = Lista;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Erro ao Listar Dados" + ex.Message);
+            }
+        }
+
+        private void frmCadUsuario_Load(object sender, EventArgs e)
+        {
+            ListarGrid();
+        }
     }
 }
