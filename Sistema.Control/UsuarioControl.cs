@@ -40,7 +40,7 @@ namespace Sistema.Control
                 SqlCommand cn = new SqlCommand();
                 cn.CommandType = CommandType.Text;
                 con.Open();
-                cn.CommandText = "SELECT * FROM usuarios";
+                cn.CommandText = "SELECT * FROM usuarios ORDER BY nome ASC";
 
                 cn.Connection = con;
 

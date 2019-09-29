@@ -80,6 +80,14 @@ namespace Sistema.View
             txtUsuario.Enabled = true;
             txtSenha.Enabled = true;
         }
+
+        private void DesabilitarCampos()
+        {
+            txtNome.Enabled = false;
+            txtUsuario.Enabled = false;
+            txtSenha.Enabled = false;
+        }
+
         private void LimparCampos()
         {
             txtNome.Text= "";
@@ -91,6 +99,8 @@ namespace Sistema.View
         {
             opc = "Salvar";
             iniciarOpc();
+            ListarGrid();
+            DesabilitarCampos();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
