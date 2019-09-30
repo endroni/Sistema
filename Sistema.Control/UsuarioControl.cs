@@ -32,6 +32,47 @@ namespace Sistema.Control
             }   
         }
 
+        public UsuarioEnt Login(UsuarioEnt obj)
+        {
+            using (SqlConnection con = new SqlConnection())
+            {
+                con.ConnectionString = Properties.Settings.Default.banco;
+                SqlCommand cn = new SqlCommand();
+                cn.CommandType = CommandType.Text;
+                con.Open();
+                cn.CommandText = "SELECT * FROM usuarios WHERE usuario = @usuario AND @senha = @senha";
+
+                cn.Connection = con;
+
+                cn.Parameters.Add("usuario", SqlDbType.VarChar).Value = obj.Usuario;
+                cn.Parameters.Add("senha", SqlDbType.VarChar).Value = obj.Senha;
+
+                SqlDataReader dr;
+                List<UsuarioEnt> Lista = new List<UsuarioEnt>();
+
+                dr = cn.ExecuteReader();
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        UsuarioEnt dado = new UsuarioEnt();
+                        
+                        dado.Usuario = Convert.ToString(dr["usuario"]);
+                        dado.Senha = Convert.ToString(dr["senha"]);
+
+                        
+                    }
+                }
+                else
+                {
+                    obj.Usuario = null;
+                    obj.Senha = null;
+                }
+                return obj;
+            }
+        }
+
         public List<UsuarioEnt> Lista()
         {
             using (SqlConnection con = new SqlConnection())

@@ -58,7 +58,7 @@
             // lblMensagem
             // 
             this.lblMensagem.AutoSize = true;
-            this.lblMensagem.Location = new System.Drawing.Point(70, 117);
+            this.lblMensagem.Location = new System.Drawing.Point(67, 151);
             this.lblMensagem.Name = "lblMensagem";
             this.lblMensagem.Size = new System.Drawing.Size(16, 13);
             this.lblMensagem.TabIndex = 2;
