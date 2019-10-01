@@ -43,14 +43,14 @@ namespace Sistema.View
 
                 obj = new UsuarioModel().Login(obj);
 
-                if (obj.Usuario == null)
+                if (obj.Usuario == null) 
                 {
                     lblMensagem.Text = "Usuário ou senha não encontrado!";
                     lblMensagem.ForeColor = Color.Red;
                     return;
                 }
 
-                frmCadUsuario form = new frmCadUsuario();
+                frmCadUsuario form = new frmCadUsuario() { telaprincipal = this};
                 this.Hide(); 
                 form.Show();
                 // this.Close();

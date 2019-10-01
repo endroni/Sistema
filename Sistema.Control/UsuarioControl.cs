@@ -40,7 +40,7 @@ namespace Sistema.Control
                 SqlCommand cn = new SqlCommand();
                 cn.CommandType = CommandType.Text;
                 con.Open();
-                cn.CommandText = "SELECT * FROM usuarios WHERE usuario = @usuario AND @senha = @senha";
+                cn.CommandText = "SELECT * FROM usuarios WHERE usuario = @usuario AND senha = @senha";
 
                 cn.Connection = con;
 

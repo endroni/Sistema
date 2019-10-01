@@ -14,6 +14,8 @@ namespace Sistema.View
 {
     public partial class frmCadUsuario : Form
     {
+        public Form telaprincipal;
+
         UsuarioEnt objTabela = new UsuarioEnt();
 
         public frmCadUsuario()
