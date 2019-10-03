@@ -149,6 +149,12 @@ namespace Sistema.View
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (txtCodigo.Text == "")
+            {
+                MessageBox.Show("Selecione um registro!");
+                return;
+            }
+
             opc = "Excluir";
             iniciarOpc();
             ListarGrid();
@@ -158,6 +164,12 @@ namespace Sistema.View
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if (txtCodigo.Text == "")
+            {
+                MessageBox.Show("Selecione um registro!");
+                return;
+            }
+
             opc = "Editar";
             iniciarOpc();
             ListarGrid();
