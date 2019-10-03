@@ -29,5 +29,10 @@ namespace Sistema.Model
         {
             return new UsuarioControl().Excluir(objTabela);
         }
+
+        public static int Editar(UsuarioEnt objTabela)
+        {
+            return new UsuarioControl().Editar(objTabela);
+        }
     }
 }

@@ -32,6 +32,28 @@ namespace Sistema.Control
             }   
         }
 
+        public int Editar(UsuarioEnt objTabela)
+        {
+            using (SqlConnection con = new SqlConnection())
+            {
+                con.ConnectionString = Properties.Settings.Default.banco;
+                SqlCommand cn = new SqlCommand();
+                cn.CommandType = CommandType.Text;
+                con.Open();
+                cn.CommandText = "UPDATE usuarios SET nome =  @nome, usuario = @usuario, senha = @senha WHERE id = @id";
+                cn.Parameters.Add("nome", SqlDbType.VarChar).Value = objTabela.Nome;
+                cn.Parameters.Add("usuario", SqlDbType.VarChar).Value = objTabela.Usuario;
+                cn.Parameters.Add("senha", SqlDbType.VarChar).Value = objTabela.Senha;
+                cn.Parameters.Add("id", SqlDbType.Int).Value = objTabela.Id;
+
+                cn.Connection = con;
+
+                int qtd = cn.ExecuteNonQuery();
+                Console.Write(qtd);
+                return qtd;
+            }
+        }
+
         public int Excluir(UsuarioEnt objTabela)
         {
             using (SqlConnection con = new SqlConnection())

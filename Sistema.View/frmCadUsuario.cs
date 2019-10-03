@@ -87,6 +87,28 @@ namespace Sistema.View
                     break;
 
                 case "Editar":
+                    try
+                    {
+                        objTabela.Id = Convert.ToInt32(txtCodigo.Text);
+                        objTabela.Nome = txtNome.Text;
+                        objTabela.Usuario = txtUsuario.Text;
+                        objTabela.Senha = txtSenha.Text;
+
+                        int x = UsuarioModel.Editar(objTabela);
+                        if (x > 0)
+                        {
+                            MessageBox.Show(String.Format("Usuário {0} atualizado com sucesso", txtNome.Text));
+                        }
+                        else
+                        {
+                            MessageBox.Show("Dado não atualizado!");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocorreu um erro ao Editar. Error: " + ex.Message);
+                        throw;
+                    }
                     break;
 
                 default:
@@ -114,6 +136,7 @@ namespace Sistema.View
             txtNome.Text= "";
             txtUsuario.Text = "";
             txtSenha.Text = "";
+            txtCodigo.Text = "";
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -130,12 +153,16 @@ namespace Sistema.View
             iniciarOpc();
             ListarGrid();
             DesabilitarCampos();
+            LimparCampos();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
             opc = "Editar";
             iniciarOpc();
+            ListarGrid();
+            DesabilitarCampos();
+            LimparCampos();
         }
 
         private void ListarGrid()
