@@ -137,5 +137,13 @@ namespace Sistema.View
         {
             ListarGrid();
         }
+
+        private void grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtCodigo.Text = grid.CurrentRow.Cells[0].Value.ToString();
+            txtNome.Text = grid.CurrentRow.Cells[1].Value.ToString();
+            txtUsuario.Text = grid.CurrentRow.Cells[2].Value.ToString();
+            txtSenha.Text = grid.CurrentRow.Cells[3].Value.ToString();
+        }
     }
 }
