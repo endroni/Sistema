@@ -24,5 +24,10 @@ namespace Sistema.Model
         {
             return new UsuarioControl().Login(obj);
         }
+
+        public static int Excluir(UsuarioEnt objTabela)
+        {
+            return new UsuarioControl().Excluir(objTabela);
+        }
     }
 }

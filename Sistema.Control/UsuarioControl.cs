@@ -32,6 +32,26 @@ namespace Sistema.Control
             }   
         }
 
+        public int Excluir(UsuarioEnt objTabela)
+        {
+            using (SqlConnection con = new SqlConnection())
+            {
+                con.ConnectionString = Properties.Settings.Default.banco;
+                SqlCommand cn = new SqlCommand();
+                cn.CommandType = CommandType.Text;
+                con.Open();
+                cn.CommandText = "DELETE FROM usuarios WHERE id = @id";
+
+                cn.Parameters.Add("id", SqlDbType.Int).Value = objTabela.Id;
+
+                cn.Connection = con;
+
+                int qtd = cn.ExecuteNonQuery();
+                Console.Write(qtd);
+                return qtd;
+            }
+        }
+
         public UsuarioEnt Login(UsuarioEnt obj)
         {
             using (SqlConnection con = new SqlConnection())

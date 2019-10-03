@@ -65,6 +65,25 @@ namespace Sistema.View
                     break;
 
                 case "Excluir":
+                    try
+                    {
+                        objTabela.Id = Convert.ToInt32(txtCodigo.Text);
+
+                        int x = UsuarioModel.Excluir(objTabela);
+                        if (x > 0)
+                        {
+                            MessageBox.Show(String.Format("Usuário {0} foi excluído com sucesso!", txtNome.Text));
+                        }
+                        else
+                        {
+                            MessageBox.Show("Não Excluído!");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocorreu um erro ao Excluir. Error: " + ex.Message);
+                        throw;
+                    }
                     break;
 
                 case "Editar":
@@ -109,6 +128,8 @@ namespace Sistema.View
         {
             opc = "Excluir";
             iniciarOpc();
+            ListarGrid();
+            DesabilitarCampos();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -144,6 +165,7 @@ namespace Sistema.View
             txtNome.Text = grid.CurrentRow.Cells[1].Value.ToString();
             txtUsuario.Text = grid.CurrentRow.Cells[2].Value.ToString();
             txtSenha.Text = grid.CurrentRow.Cells[3].Value.ToString();
+            HabilitarCampos();
         }
     }
 }
