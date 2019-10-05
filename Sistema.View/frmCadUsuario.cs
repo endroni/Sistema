@@ -32,7 +32,7 @@ namespace Sistema.View
         private string opc = "";
 
         private void iniciarOpc()
-        {
+        {            
             switch (opc)
             {
                 case "Novo":
@@ -111,6 +111,22 @@ namespace Sistema.View
                     }
                     break;
 
+                case "Buscar":
+                    try
+                    {
+                        objTabela.Nome = txtBuscar.Text;
+                        List<UsuarioEnt> Lista = new List<UsuarioEnt>();
+                        Lista = new UsuarioModel().Buscar(objTabela);
+                        grid.AutoGenerateColumns = false;
+                        grid.DataSource = Lista;
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show("Erro ao Listar Dados" + ex.Message);
+                    }
+                    break;
+
                 default:
                     break;
             }
@@ -119,6 +135,7 @@ namespace Sistema.View
 
         private void HabilitarCampos()
         {
+            txtBuscar.Enabled = true;
             txtNome.Enabled = true;
             txtUsuario.Enabled = true;
             txtSenha.Enabled = true;
@@ -126,6 +143,7 @@ namespace Sistema.View
 
         private void DesabilitarCampos()
         {
+            txtBuscar.Enabled = true;
             txtNome.Enabled = false;
             txtUsuario.Enabled = false;
             txtSenha.Enabled = false;
@@ -133,6 +151,7 @@ namespace Sistema.View
 
         private void LimparCampos()
         {
+            txtBuscar.Text = "";
             txtNome.Text= "";
             txtUsuario.Text = "";
             txtSenha.Text = "";
@@ -195,7 +214,7 @@ namespace Sistema.View
 
         private void frmCadUsuario_Load(object sender, EventArgs e)
         {
-            ListarGrid();
+            ListarGrid();            
         }
 
         private void grid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -205,6 +224,12 @@ namespace Sistema.View
             txtUsuario.Text = grid.CurrentRow.Cells[2].Value.ToString();
             txtSenha.Text = grid.CurrentRow.Cells[3].Value.ToString();
             HabilitarCampos();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            opc = "Buscar";
+            iniciarOpc();      
         }
     }
 }

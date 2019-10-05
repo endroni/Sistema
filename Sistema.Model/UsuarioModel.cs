@@ -34,5 +34,10 @@ namespace Sistema.Model
         {
             return new UsuarioControl().Editar(objTabela);
         }
+
+        public List<UsuarioEnt> Buscar(UsuarioEnt objTabela)
+        {
+            return new UsuarioControl().Buscar(objTabela);
+        }
     }
 }
