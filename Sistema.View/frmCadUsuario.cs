@@ -231,5 +231,17 @@ namespace Sistema.View
             opc = "Buscar";
             iniciarOpc();      
         }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            if(txtBuscar.Text == "")
+            {
+                ListarGrid();
+                return;
+            }
+
+            opc = "Buscar";
+            iniciarOpc();
+        }
     }
 }
