@@ -40,9 +40,9 @@ namespace Sistema.Control
                 SqlCommand cn = new SqlCommand();
                 cn.CommandType = CommandType.Text;
                 con.Open();
-                cn.CommandText = "SELECT * FROM usuarios WHERE nome = @nome;";
+                cn.CommandText = "SELECT * FROM usuarios WHERE nome LIKE @nome";
 
-                cn.Parameters.Add("nome", SqlDbType.VarChar).Value = objTabela.Nome;
+                cn.Parameters.Add("nome", SqlDbType.VarChar).Value = objTabela.Nome + "%";
 
                 cn.Connection = con;
 
