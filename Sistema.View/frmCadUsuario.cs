@@ -135,7 +135,6 @@ namespace Sistema.View
 
         private void HabilitarCampos()
         {
-            txtBuscar.Enabled = true;
             txtNome.Enabled = true;
             txtUsuario.Enabled = true;
             txtSenha.Enabled = true;
@@ -143,7 +142,6 @@ namespace Sistema.View
 
         private void DesabilitarCampos()
         {
-            txtBuscar.Enabled = true;
             txtNome.Enabled = false;
             txtUsuario.Enabled = false;
             txtSenha.Enabled = false;
@@ -151,7 +149,6 @@ namespace Sistema.View
 
         private void LimparCampos()
         {
-            txtBuscar.Text = "";
             txtNome.Text= "";
             txtUsuario.Text = "";
             txtSenha.Text = "";
