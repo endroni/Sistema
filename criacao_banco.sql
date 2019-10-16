@@ -8,3 +8,7 @@ CREATE TABLE usuarios
 	usuario NVARCHAR(50),
 	senha NVARCHAR(50)
 );
+GO
+INSERT INTO db_mvc.usuarios 
+( nome, usuario, senha ) VALUES 
+('Admin','admin','123');
